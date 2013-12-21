@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <style>
+        #keyboard {
+          background-color: #F0F0F0;
+          margin: 20px;
+          height: 280px;
+          width: 750px;
+          border: 2px outset #f0f0f0;
+          border-radius: 20px;
+          padding: 10px;
+        }
+        .key {
+          color: white;
+          background-color: #191919;
+          line-height: 2.7em;
+          display: inline-block;
+          border: 1px outset grey;
+          height: 50px;
+          width: 50px;
+          text-align: center;
+          border-radius: 5px;
+          margin: 2px;
+          font-size: 19px;
+        }
+        #display-box{
+            height: 50px;
+            width: 50px;
+            border: 1px solid blue;
+        }
+        #display-text{
+          height:60px;
+          width:750px;
+          border:1px outset grey;
+          margin-left: 25px;
+          font-size:20px;
+          padding: 10px;
+        }
+        #site-wrapper {
+          width:750px;
+          margin: 0 auto;
+        }
+        body {
+          background: img/background-keyboard.jpg;
+        }
+        .target-on-deck {
+          height: 50px;
+          width: 50px;
+          border: 1px solid blue;
+          line-height: 2.7em;
+          display: inline-block;
+          text-align: center;
+          border-radius: 5px;
+          margin: 2px;
+          font-size: 19px;
+        }
+        #display-box {
+          border: 1px solid blue;
+        }
+
+        </style>
+    </head>
+    <body>
+      <div id="site-wrapper">
+        <img style="margin-left:50px;" src="img/colorful-keyboard-logo.png">
+        <button id="start-game"> Start Game</button>
+        <input type="text"> </input>
+        <div id="display-box"></div>
+        <div id="keyboard">
+            <div id="1" class="key">1</div>
+            <div id="2" class="key">2</div>
+            <div id="3" class="key">3</div>
+            <div id="4" class="key">4</div>
+            <div id="5" class="key">5</div>
+            <div id="6" class="key">6</div>
+            <div id="7" class="key">7</div>
+            <div id="8" class="key">8</div>
+            <div id="9" class="key">9</div>
+            <div id="0" class="key">0</div>
+            <div id="dash" class="key">-</div>
+            <div id="equal" class="key">=</div>
+            <br>
+            <div style="margin-left: 16px" id="q" class="key">Q</div>
+            <div id="w" class="key">W</div>
+            <div id="e" class="key">E</div>
+            <div id="r" class="key">R</div>
+            <div id="t" class="key">T</div>
+            <div id="y" class="key">Y</div>
+            <div id="u" class="key">U</div>
+            <div id="i" class="key">I</div>
+            <div id="o" class="key">O</div>
+            <div id="p" class="key">P</div>
+            <div id="leftBracket" class="key">[</div>
+            <div id="rightBracket" class="key">]</div>
+            <br>
+            <div style="margin-left: 32px" id="a" class="key">A</div>
+            <div id="s" class="key">S</div>
+            <div id="d" class="key">D</div>
+            <div id="f" class="key">F</div>
+            <div id="g" class="key">G</div>
+            <div id="h" class="key">H</div>
+            <div id="j" class="key">J</div>
+            <div id="k" class="key">K</div>
+            <div id="l" class="key">L</div>
+            <div id="semicolon" class="key">;</div>
+            <div id="quote" class="key">'</div>
+            <div style="width:54px"id="enter" class="key">enter</div>
+            <br>
+            <div style="margin-left: 0px" id="leftShift" class="key">shift</div>
+            <div id="z" class="key">Z</div>
+            <div id="x" class="key">X</div>
+            <div id="c" class="key">C</div>
+            <div id="v" class="key">V</div>
+            <div id="b" class="key">B</div>
+            <div id="n" class="key">N</div>
+            <div id="m" class="key">M</div>
+            <div id="comma" class="key">,</div>
+            <div id="period" class="key">.</div>
+            <div id="slash" class="key">/</div>
+            <div style="width:86px;" id="rightShift" class="key">shift</div>
+            <br>
+            <div style="margin-left: 180px; width:290px;" id="space" class="key"></div>
+
+        </div>
+      </div><!--End of site wrapper -->
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            $( document ).ready(function() {
+            //tiny mce
+            // Handler for .ready() called.
+              console.log("umm bumm bumm");
+                $(document).keydown(function(e) {
+                  var code = (e.keyCode ? e.keyCode : e.which);
+                  $('#display-box').html(code);
+                  switch(code) {
+                  //FIRST ROW
+                  case 49: 
+                    $('#1').css("background-color","#FF8080").css("color","black"); setTimeout(function() {resetKey("1")}, 250); break;
+                  case 50: 
+                    $('#2').css("background-color","#FFFFB2").css("color","black"); setTimeout(function() {resetKey("2")}, 250); break;
+                  case 51: 
+                    $('#3').css("background-color","#99D6FF").css("color","black"); setTimeout(function() {resetKey("3")}, 250); break;
+                  case 52: 
+                    $('#4').css("background-color","#FFC2E0").css("color","black"); setTimeout(function() {resetKey("4")}, 250); break;
+                  case 53: 
+                    $('#5').css("background-color","#b2ffb2").css("color","black"); setTimeout(function() {resetKey("5")}, 250); break;
+                  case 54: 
+                    $('#6').css("background-color","#f5ccff").css("color","black"); setTimeout(function() {resetKey("6")}, 250); break;
+                  case 55: 
+                    $('#7').css("background-color","#ffcc80").css("color","black"); setTimeout(function() {resetKey("7")}, 250); break;
+                  case 56: 
+                    $('#8').css("background-color","#F0FFA3").css("color","black"); setTimeout(function() {resetKey("8")}, 250); break;
+                  case 57: 
+                    $('#9').css("background-color","#ffe0f0").css("color","black"); setTimeout(function() {resetKey("9")}, 250); break;
+                  case 48: 
+                    $('#0').css("background-color","#CCFFFF").css("color","black"); setTimeout(function() {resetKey("0")}, 250); break;
+                  case 189: 
+                    $('#dash').css("background-color","#cccccc").css("color","black"); setTimeout(function() {resetKey("dash")}, 250); break;
+                  case 187: 
+                    $('#equal').css("background-color","#e6e6e6").css("color","black"); setTimeout(function() {resetKey("equal")}, 250); break;
+                    //SECOND ROW
+                    //
+                  case 81: 
+                    $('#q').css("background-color","#ff4d4d").css("color","black"); setTimeout(function() {resetKey("q")}, 250); break;
+                  case 87: 
+                    $('#w').css("background-color","#FFFF99").css("color","black"); setTimeout(function() {resetKey("w")}, 250); break;
+                  case 69: 
+                    $('#e').css("background-color","#66C2FF").css("color","black"); setTimeout(function() {resetKey("e")}, 250); break;
+                  case 82: 
+                    $('#r').css("background-color","#FF99CC").css("color","black"); setTimeout(function() {resetKey("r")}, 250); break;
+                  case 84: 
+                    $('#t').css("background-color","#80ff80").css("color","black"); setTimeout(function() {resetKey("t")}, 250); break;
+                  case 89: 
+                    $('#y').css("background-color","#f0b2ff").css("color","black"); setTimeout(function() {resetKey("y")}, 250); break;
+                  case 85: 
+                    $('#u').css("background-color","#ffc266").css("color","black"); setTimeout(function() {resetKey("u")}, 250); break;
+                  case 73: 
+                    $('#i').css("background-color","#E0FFA3").css("color","black"); setTimeout(function() {resetKey("i")}, 250); break;
+                  case 79: 
+                    $('#o').css("background-color","#ffc2e0").css("color","black"); setTimeout(function() {resetKey("o")}, 250); break;
+                  case 80: 
+                    $('#p').css("background-color","#B2FFFF").css("color","black"); setTimeout(function() {resetKey("p")}, 250); break;
+                  case 219: 
+                    $('#leftBracket').css("background-color","#cccccc").css("color","black"); setTimeout(function() {resetKey("leftBracket")}, 250); break;
+                  case 221: 
+                    $('#rightBracket').css("background-color","#e6e6e6").css("color","black"); setTimeout(function() {resetKey("rightBracket")}, 250); break;
+                  //Third Row
+                  case 65: 
+                    $('#a').css("background-color","#ff3333").css("color","black"); setTimeout(function() {resetKey("a")}, 250); break;
+                  case 83: 
+                    $('#s').css("background-color","#FFFF00").css("color","black"); setTimeout(function() {resetKey("s")}, 250); break;
+                  case 68: 
+                    $('#d').css("background-color","#0099FF").css("color","black"); setTimeout(function() {resetKey("d")}, 250); break;
+                  case 70: 
+                    $('#f').css("background-color","#FF3399").css("color","black"); setTimeout(function() {resetKey("f")}, 250); break;
+                  case 71: 
+                    $('#g').css("background-color","#00ff00").css("color","black"); setTimeout(function() {resetKey("g")}, 250); break;
+                  case 72: 
+                    $('#h').css("background-color","#cc00ff").css("color","black"); setTimeout(function() {resetKey("h")}, 250); break;
+                  case 74: 
+                    $('#j').css("background-color","#ff9900").css("color","black"); setTimeout(function() {resetKey("j")}, 250); break;
+                  case 75: 
+                    $('#k').css("background-color","#CCFF66").css("color","black"); setTimeout(function() {resetKey("k")}, 250); break;
+                  case 76: 
+                    $('#l').css("background-color","#ff99cc").css("color","black"); setTimeout(function() {resetKey("l")}, 250); break;
+                  case 186: 
+                    $('#semicolon').css("background-color","#00FFFF").css("color","black"); setTimeout(function() {resetKey("semicolon")}, 250); break;
+                  case 222: 
+                    $('#quote').css("background-color","#cccccc").css("color","black"); setTimeout(function() {resetKey("quote")}, 250); break;
+                  case 13: 
+                    $('#enter').css("background-color","white").css("color","black"); setTimeout(function() {resetKey("enter")}, 250); break;
+                    //////////////
+                    //Fourth Row
+                  case 16: 
+                    $('#leftShift').css("background-color","white").css("color","black"); setTimeout(function() {resetKey("leftShift")}, 250);
+                    $('#rightShift').css("background-color","white").css("color","black"); setTimeout(function() {resetKey("rightShift")}, 250); break;
+                  
+                  case 90: 
+                    $('#z').css("background-color","#b20000").css("color","black"); setTimeout(function() {resetKey("z")}, 250); break;
+                  case 88: 
+                    $('#x').css("background-color","#CCCC00").css("color","black"); setTimeout(function() {resetKey("x")}, 250); break;
+                  case 67: 
+                    $('#c').css("background-color","#004C80").css("color","black"); setTimeout(function() {resetKey("c")}, 250); break;
+                  case 86: 
+                    $('#v').css("background-color","#991f5c").css("color","black"); setTimeout(function() {resetKey("v")}, 250); break;
+                  case 66: 
+                    $('#b').css("background-color","#008000").css("color","black"); setTimeout(function() {resetKey("b")}, 250); break;
+                  case 78: 
+                    $('#n').css("background-color","#7a0099").css("color","black"); setTimeout(function() {resetKey("n")}, 250); break;
+                  case 77: 
+                    $('#m').css("background-color","#c67a00").css("color","black"); setTimeout(function() {resetKey("m")}, 250); break;
+                  case 188: 
+                    $('#comma').css("background-color","#8Fb247").css("color","black"); setTimeout(function() {resetKey("comma")}, 250); break;
+                  case 190: 
+                    $('#period').css("background-color","#e68ab8").css("color","black"); setTimeout(function() {resetKey("period")}, 250); break;
+                  case 191: 
+                    $('#slash').css("background-color","#00B2B2").css("color","black"); setTimeout(function() {resetKey("slash")}, 250); break;
+                    //Space
+                  case 32: 
+                    $('#space').css("background-color","white").css("color","black"); setTimeout(function() {resetKey("space")}, 250); break;
+                    //////////////
+                  };
+                  //setInterval(function9){startGame(level)},250);
+
+               });  //End Keypress listener
+            });//End $(document).ready(function() {})
+////////////////////////////////////////////////////////////Utility Functions////////////////////     
+//
+//          
+        /*
+            var keyState [];
+            var instantiateVariable = function(){
+              for(var i=0;i>41;i++) {
+                keyState[i] = "key";
+                console.log[i];
+              }
+            };
+
+            var randomGenerate = function(){
+              var num = Math.floor(Math.random() * 40 + 1);
+              return num;
+            };
+            */      
+            var resetKey = function(key){
+              $("#"+key).css("background-color","#191919").css("color","white");
+            }; 
+          
+        </script>
+    </body>    
